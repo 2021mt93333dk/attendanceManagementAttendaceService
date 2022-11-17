@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: attendance-deployment
+  labels:
+    app: attendance
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: attendance
+  template:
+    metadata:
+      labels:
+       app: attendance
+    spec:
+      containers:
+      - name: attendanceserver
+        image: mohinig33/attendance:latest
+        ports:
+        - containerPort: 3002
